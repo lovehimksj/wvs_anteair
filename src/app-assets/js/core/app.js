@@ -178,7 +178,7 @@
     });
 
     // Add Children Class
-    $('.navigation').addClass('Himanshu')
+    $('.navigation').addClass('Himanshu');
     $('.navigation').find('li').has('ul.menu-content').addClass('has-sub');
 
     $('.carousel').carousel({

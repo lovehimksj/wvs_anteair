@@ -12774,4 +12774,4 @@ Highcharts.maps[
             }
         }
     ]
-}
+};

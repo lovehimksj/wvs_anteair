@@ -1,36 +1,70 @@
-<div class="col-md-12 col-lg-12 col-sm-12 col-12 col-xl-12">
-	<h2>Register</h2>
-	<form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate  autocomplete="off">
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !advertiserEmailId.valid }">
-			<label for="advertiserEmailId">advertiserEmailId</label>
-			<input type="text" id="advertiserEmailId" class="form-control" name="advertiserEmailId" [(ngModel)]="account.advertiserEmailId" #advertiserEmailId="ngModel" required/>
-			<div *ngIf="f.submitted && !advertiserEmailId.valid" class="help-block">Email is required</div>
-		</div>
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="card border-grey border-lighten-3 m-0">
+			<div class="card-header no-border">
+				<div class="card-title text-xs-center">
+					<div class="p-1"><img src="app-assets/images/logo/logo.png" alt="branding logo"></div>
+				</div>
+				<h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Register with Anteair User</span>
+				</h6>
+			</div>
+			<div class="card-body collapse in">
+				<div class="card-block">
+					<form name="form" id="registerForm" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate
+					      autocomplete="off">
+						<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !advertiserName.valid }">
+							<label for="advertiserName">Name</label>
+							<input type="text" id="advertiserName" class="form-control" name="advertiserName"
+							       [(ngModel)]="account.advertiserName" #advertiserName="ngModel" required/>
+							<div *ngIf="f.submitted && !advertiserName.valid" class="help-block">Name is
+								required
+							</div>
+						</div>
+						
+						<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !advertiserEmailId.valid }">
+							<label for="advertiserEmailId">Email id</label>
+							<input type="text" id="advertiserEmailId" class="form-control" name="advertiserEmailId"
+							       [(ngModel)]="account.advertiserEmailId" #advertiserEmailId="ngModel" required/>
+							<div *ngIf="f.submitted && !advertiserEmailId.valid" class="help-block">Email is required
+							</div>
+						</div>
+						
+						<div class="form-group"
+						     [ngClass]="{ 'has-error': f.submitted && !advertiserMobileNumber.valid }">
+							<label for="advertiserMobileNumber">Mobile Number</label>
+							<input type="text" id="advertiserMobileNumber" class="form-control"
+							       name="advertiserMobileNumber" [(ngModel)]="account.advertiserMobileNumber"
+							       #advertiserMobileNumber="ngModel" required/>
+							<div *ngIf="f.submitted && !advertiserMobileNumber.valid" class="help-block">Mobile Number
+								is required
+							</div>
+						</div>
+						
+						<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+							<label for="password">Password</label>
+							<input type="password" id="password" class="form-control" name="password"
+							       [(ngModel)]="account.password" #password="ngModel" required/>
+							<div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+						</div>
+						
+						<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !confirmPassword.valid }">
+							<label for="confirmPassword">Confirm Password</label>
+							<input type="password" id="confirmPassword" class="form-control" name="confirmPassword"
+							       [(ngModel)]="account.confirmPassword" #confirmPassword="ngModel" required/>
+							<div *ngIf="f.submitted && !confirmPassword.valid" class="help-block">Password is required
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !companyName.valid }">
-			<label for="companyName">companyName</label>
-			<input type="text" id="companyName" class="form-control" name="companyName" [(ngModel)]="account.companyName" #companyName="ngModel" required/>
-			<div *ngIf="f.submitted && !companyName.valid" class="help-block">Company Name is required</div>
 		</div>
-		
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !advertiserName.valid }">
-			<label for="advertiserName">advertiserName</label>
-			<input type="text" id="advertiserName" class="form-control" name="advertiserName" [(ngModel)]="account.advertiserName" #advertiserName="ngModel" required/>
-			<div *ngIf="f.submitted && !advertiserName.valid" class="help-block">Advertiser Name is required</div>
+		<div class="modal-footer">
+			<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+			<button [disabled]="loading" type="submit" form="registerForm" class="btn btn-outline-primary"><i
+				class="icon-unlock2"></i>Register
+			</button>
 		</div>
-		
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !advertiserMobileNumber.valid }">
-			<label for="advertiserMobileNumber">advertiserMobileNumber</label>
-			<input type="text" id="advertiserMobileNumber" class="form-control" name="advertiserMobileNumber" [(ngModel)]="account.advertiserMobileNumber" #advertiserMobileNumber="ngModel" required/>
-			<div *ngIf="f.submitted && !advertiserMobileNumber.valid" class="help-block">Advertiser Mobile Number is required</div>
-		</div>
-		
-		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-			<label for="password">password</label>
-			<input type="password" id="password" class="form-control" name="password" [(ngModel)]="account.password" #password="ngModel" required/>
-			<div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-		</div>
-		<button [disabled]="loading" class="btn btn-primary">Register</button>
-	</form>
+	</div>
 </div>
 

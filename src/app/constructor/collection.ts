@@ -6,6 +6,6 @@ export class Collection<T> {
 	public hasMoreItems: boolean;
 
 	constructor() {
-		this.data = new Array<T>();
+		this.data = [];
 	}
 }

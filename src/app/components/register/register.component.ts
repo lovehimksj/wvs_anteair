@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserRegister} from '../../constructor/user-register';
 import {AccountService} from '../../service/account/account.service';
 import sha256 from 'crypto-js/sha256';
+import {Router} from "@angular/router";
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 	private errorMessage: string;
 	private account: UserRegister = new UserRegister();
 
-	constructor(private accountService: AccountService) {
+	constructor(private accountService: AccountService, private router: Router) {
 	}
 
 	ngOnInit() {
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
 		this.isLoading = true;
 		this.errorMessage = '';
 		this.account.password = sha256(this.account.password);
-		this.accountService.addAdvertiser({'advertiser' : this.account})
+		this.router.navigateByUrl('/register');
+		/*this.accountService.addAdvertiser({'advertiser' : this.account})
 			.finally(() => {
 				this.isLoading = false;
 			})
@@ -31,6 +33,6 @@ export class RegisterComponent implements OnInit {
 				console.log(response);
 			}, error => {
 				this.errorMessage = error;
-			});
+			});*/
 	}
 }

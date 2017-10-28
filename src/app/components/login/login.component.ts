@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 		this.account.password = sha256(this.account.password);
 		console.log(this.account.password);
 		console.log(this.account.password);
-		this.accountService.signIn(this.account)
+		/*this.accountService.signIn(this.account)
 			.finally(() => {
 				this.isLoading = false;
 			})
@@ -43,6 +43,6 @@ export class LoginComponent implements OnInit {
 				}
 			}, error => {
 				this.errorMessage = error;
-			});
+			});*/
 	}
 }

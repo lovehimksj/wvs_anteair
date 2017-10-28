@@ -32,6 +32,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CampaignComponent } from './components/advertiser/campaign/campaign.component';
+import { MerchantBoardingComponent } from './components/merchant-boarding/merchant-boarding.component';
 
 @NgModule({
 	declarations: [
@@ -46,7 +47,8 @@ import { CampaignComponent } from './components/advertiser/campaign/campaign.com
 		HeaderComponent,
 		SideNavComponent,
 		FooterComponent,
-		CampaignComponent
+		CampaignComponent,
+		MerchantBoardingComponent
 	],
 	imports: [
 		BrowserModule,
