@@ -1,0 +1,36 @@
+<!-- navbar-fixed-top-->
+<app-header></app-header>
+<!-- main menu-->
+<app-side-nav></app-side-nav>
+<!-- / main menu-->
+
+<div class="app-content content container-fluid">
+	<div class="content-wrapper">
+		<div class="content-header row">
+			<div class="content-header-left col-md-6 col-xs-12 mb-1">
+				<h5 class="content-header-title">Create a new order</h5>
+			</div>
+			<div class="content-header-right col-md-6 col-xs-12">
+				<h6 class="content-header-title text-lg-right">
+					<small>Updated on <span></span></small>
+				</h6>
+			</div>
+		</div>
+		<div class="content-body"><!-- Sales stats -->
+			<app-order></app-order>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="campaignAllocationModal" tabindex="-1" role="dialog"
+     aria-labelledby="campaignAllocationModalLabel">
+	<div class="modal-dialog modal-custom" role="document">
+		<div class="modal-content col-lg-12 col-xs-12 col-md-12 col-sm-12">
+			<app-order></app-order>
+		</div>
+	</div>
+</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-footer></app-footer>

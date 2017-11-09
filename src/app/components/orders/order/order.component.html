@@ -1,0 +1,269 @@
+<div class="row match-height">
+	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title" id="basic-layout-form">Warehouse Pick up</h4>
+			</div>
+			<div class="card-body collapse in">
+				<div class="card-block">
+					<form class="form">
+						<div class="form-body">
+							<!--<h4 class="form-section"><i class="icon-head"></i> Personal Info</h4>-->
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label>Payment Mode</label>
+										<div class="input-group">
+											<label class="display-inline-block custom-control custom-radio m-1 ml-0">
+												<input type="radio" name="paymentMode" class="custom-control-input"
+												       [(ngModel)]="order.paymentMode"
+												       value="0"
+												       #paymentMode="ngModel">
+												<span class="custom-control-indicator"></span>
+												<span class="custom-control-description">COD (Cash on Delivery)</span>
+											</label>
+											<label class="display-inline-block custom-control custom-radio m-1 ml-0">
+												<input type="radio" name="paymentMode" class="custom-control-input"
+												       [(ngModel)]="order.paymentMode"
+												       value="1"
+												       #paymentMode="ngModel">
+												<span class="custom-control-indicator"></span>
+												<span class="custom-control-description">Prepaid</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerName">Customer Name</label>
+										<input type="text" class="form-control required" id="customerName"
+										       placeholder="Customer Name"
+										       name="customerName"
+										       [(ngModel)]="order.customerName"
+										       #customerName="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerAddressFirst">Customer Address 1</label>
+										<input type="text" id="customerAddressFirst" class="form-control"
+										       placeholder="Customer Address 1"
+										       name="customerAddressFirst"
+										       [(ngModel)]="order.customerAddressFirst"
+										       #customerAddressFirst="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerAddressSecond">Customer Address 2</label>
+										<input type="text" id="customerAddressSecond" class="form-control"
+										       placeholder="Customer Address 2"
+										       name="customerAddressSecond"
+										       [(ngModel)]="order.customerAddressSecond"
+										       #customerAddressSecond="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerAddressThird">Customer Address 3</label>
+										<input type="text" id="customerAddressThird" class="form-control"
+										       placeholder="Customer Address 3"
+										       name="customerAddressThird"
+										       [(ngModel)]="order.customerAddressThird"
+										       #customerAddressThird="ngModel">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerCity">Customer City</label>
+										<input type="text" class="form-control required" id="customerCity"
+										       placeholder="Customer City"
+										       name="customerCity"
+										       [(ngModel)]="order.customerCity"
+										       #customerCity="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerState">Customer State</label>
+										<input type="text" id="customerState" class="form-control"
+										       placeholder="Customer State"
+										       name="customerState"
+										       [(ngModel)]="order.customerState"
+										       #customerState="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerPinCode">Customer Pin Code</label>
+										<input type="text" id="customerPinCode" class="form-control"
+										       placeholder="Customer Pin Code"
+										       name="customerPinCode"
+										       [(ngModel)]="order.customerPinCode"
+										       #customerPinCode="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerContact">Customer Contact</label>
+										<input type="text" id="customerContact" class="form-control"
+										       placeholder="Customer Contact"
+										       name="customerContact"
+										       [(ngModel)]="order.customerContact"
+										       #customerContact="ngModel">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="itemSku">Item SKU</label>
+										<input type="text" class="form-control required" id="itemSku"
+										       placeholder="Item SKU"
+										       name="itemSku"
+										       [(ngModel)]="order.itemSku"
+										       #itemSku="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerState">Item Name</label>
+										<input type="text" id="itemName" class="form-control"
+										       placeholder="Item Name"
+										       name="itemName"
+										       [(ngModel)]="order.itemName"
+										       #itemName="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="customerPinCode">Item Quantity</label>
+										<input type="text" id="itemQuantity" class="form-control"
+										       placeholder="Customer Quantity"
+										       name="itemQuantity"
+										       [(ngModel)]="order.itemQuantity"
+										       #itemQuantity="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="itemPrice">Item Price</label>
+										<input type="text" id="itemPrice" class="form-control"
+										       placeholder="Item Price"
+										       name="itemPrice"
+										       [(ngModel)]="order.itemPrice"
+										       #itemPrice="ngModel">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="itemHeight">Item Height</label>
+										<input type="text" class="form-control required" id="itemHeight"
+										       placeholder="Item Height"
+										       name="itemHeight"
+										       [(ngModel)]="order.itemHeight"
+										       #itemHeight="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="itemWidth">Item Width</label>
+										<input type="text" class="form-control required" id="itemWidth"
+										       placeholder="Item Width"
+										       name="itemSku"
+										       [(ngModel)]="order.itemWidth"
+										       #itemWidth="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="itemLength">Item Length</label>
+										<input type="text" id="itemLength" class="form-control"
+										       placeholder="Item Name"
+										       name="itemLength"
+										       [(ngModel)]="order.itemLength"
+										       #itemLength="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label for="itemWeight">Item Weight</label>
+										<input type="text" id="itemWeight" class="form-control"
+										       placeholder="Customer Weight"
+										       name="itemWeight"
+										       [(ngModel)]="order.itemWeight"
+										       #itemWeight="ngModel">
+									</div>
+								</div>
+							
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="codDue">COD Due</label>
+										<input type="text" id="codDue" class="form-control"
+										       placeholder="COD Due"
+										       name="codDue"
+										       [(ngModel)]="order.codDue"
+										       #codDue="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="orderType">Order Type</label>
+										<select id="orderType" name="orderType" class="form-control"
+										        [(ngModel)]="order.orderType"
+										        #orderType="ngModel">
+											<option value="0" selected="" disabled="">Budget</option>
+											<option value="less than 5000$">less than 5000$</option>
+											<option value="5000$ - 10000$">5000$ - 10000$</option>
+											<option value="10000$ - 20000$">10000$ - 20000$</option>
+											<option value="more than 20000$">more than 20000$</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-actions pull-right">
+			<button type="button" class="btn btn-warning mr-1">
+				<i class="icon-cross2"></i> Cancel
+			</button>
+			<button type="submit" class="btn btn-primary" (click)="createOrder()">
+				<i class="icon-check2"></i> Save
+			</button>
+		</div>
+	</div>
+</div>
