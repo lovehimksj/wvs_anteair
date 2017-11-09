@@ -50,7 +50,7 @@
               }
               setTimeout(function(){
                 // $.app.menu.container.scrollTop(position.top);
-                $.app.menu.container.stop().animate({scrollTop:position.top}, 300);
+                // $.app.menu.container.stop().animate({scrollTop:position.top}, 300);
                 $('.main-menu').data('scroll-to-active', 'false');
               },300);
           }
@@ -73,6 +73,55 @@
           $('.main-menu-content').css('height', $(window).height() - $('.header-navbar').height() - $('.main-menu-header').outerHeight() - $('.main-menu-footer').outerHeight() );
           this.update();
         }
+      }
+    },
+
+    mMenu: {
+      obj: null,
+
+      init: function(){
+        $(".main-menu").mmenu({
+          slidingSubmenus: true,
+          offCanvas: false,
+          counters    : false,
+          navbar      : {
+            title     : ''
+          },
+          navbars     : [
+            {
+              position  : 'top',
+              content   : ['searchfield']
+            }
+          ],
+          searchfield   : {
+            resultsPanel  : true
+          },
+          setSelected   : {
+            parent      : true
+          }
+        },
+          {
+            // configuration
+            classNames: {
+                divider: "navigation-header",
+                selected: "active"
+            },
+            searchfield   : {
+              clear : true
+            }
+          }
+        );
+
+        $('a.mm-next').addClass('mm-fullsubopen');
+
+        // Assign menu to API variable
+        this.obj = $(".main-menu").data( "mmenu" );
+      },
+
+      enable: function(){
+        this.init();
+      },
+      disable: function(){
       }
     },
 
@@ -157,6 +206,12 @@
         this.toOverlayMenu(currentBreakpoint.name);
       }
 
+      if($body.is('.horizontal-layout') && !$body.hasClass('.horizontal-menu-demo')){
+        this.changeMenu(currentBreakpoint.name);
+
+        $('.menu-toggle').removeClass('is-active');
+      }
+
       // Initialize drill down menu for vertical layouts, for horizontal layouts drilldown menu is intitialized in changemenu function
       if(menuType != 'horizontal-menu' && menuType != 'horizontal-top-icon-menu'){
         // Drill down menu
@@ -208,6 +263,78 @@
         $(this).parent().siblings().removeClass('open');
         $(this).parent().toggleClass('open');
       });
+
+      // Horizontal Fixed Nav Sticky hight issue on small screens
+      if(menuType == 'horizontal-menu' || menuType == 'horizontal-top-icon-menu'){
+        if(currentBreakpoint.name == 'sm' || currentBreakpoint.name == 'xs'){
+          if($(".menu-fixed").length){
+            $(".menu-fixed").unstick();
+          }
+        }
+        else{
+          if($(".navbar-fixed").length){
+            $(".navbar-fixed").sticky();
+          }
+        }
+      }
+
+      /********************************************
+      *             Searchable Menu               *
+      ********************************************/
+
+      function searchMenu(list) {
+
+        var input = $(".menu-search");
+        $(input)
+          .change( function () {
+            var filter = $(this).val();
+            if(filter) {
+              // Hide Main Navigation Headers
+              $('.navigation-header').hide();
+              // this finds all links in a list that contain the input,
+              // and hide the ones not containing the input while showing the ones that do
+              $(list).find("li a:not(:Contains(" + filter + "))").hide().parent().hide();
+              // $(list).find("li a:Contains(" + filter + ")").show().parents('li').show().addClass('open').closest('li').children('a').show();
+              var searchFilter = $(list).find("li a:Contains(" + filter + ")");
+              if( searchFilter.parent().hasClass('has-sub') ){
+                searchFilter.show()
+                .parents('li').show()
+                .addClass('open')
+                .closest('li')
+                .children('a').show()
+                .children('li').show();
+
+                // searchFilter.parents('li').find('li').show().children('a').show();
+                if(searchFilter.siblings('ul').length > 0){
+                  searchFilter.siblings('ul').children('li').show().children('a').show();
+                }
+
+              }
+              else{
+                searchFilter.show().parents('li').show().addClass('open').closest('li').children('a').show();
+              }
+            } else {
+              // return to default
+              $('.navigation-header').show();
+              $(list).find("li a").show().parent().show().removeClass('open');
+            }
+            $.app.menu.manualScroller.update();
+            return false;
+          })
+        .keyup( function () {
+            // fire the above change event after every letter
+            $(this).change();
+        });
+      }
+
+      if(menuType === 'vertical-menu' || menuType === 'vertical-overlay-menu' || menuType === 'vertical-content-menu'){
+        // custom css expression for a case-insensitive contains()
+        jQuery.expr[':'].Contains = function(a,i,m){
+            return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+        };
+
+        searchMenu($("#main-menu-navigation"));
+      }
     },
 
     changeLogo: function(menuType){
@@ -370,6 +497,96 @@
       }
     },
 
+    changeMenu: function(screen){
+      // Replace menu html
+      $('div[data-menu="menu-wrapper"]').html('');
+      $('div[data-menu="menu-wrapper"]').html(menuWrapper_el);
+
+      var menuWrapper    = $('div[data-menu="menu-wrapper"]'),
+      menuContainer      = $('div[data-menu="menu-container"]'),
+      menuNavigation     = $('ul[data-menu="menu-navigation"]'),
+      megaMenu           = $('li[data-menu="megamenu"]'),
+      megaMenuCol        = $('li[data-mega-col]'),
+      dropdownMenu       = $('li[data-menu="dropdown"]'),
+      dropdownSubMenu    = $('li[data-menu="dropdown-submenu"]');
+
+      if(screen == 'sm' || screen == 'xs'){
+
+        // Change body classes
+        $body.removeClass($body.data('menu')).addClass('vertical-layout vertical-overlay-menu fixed-navbar');
+
+        // Add navbar-fix-top class on small screens
+        $('nav.header-navbar').addClass('navbar-fixed-top');
+
+        // Change menu wrapper, menu container, menu navigation classes
+        menuWrapper.removeClass().addClass('main-menu menu-light menu-fixed menu-shadow');
+        // menuContainer.removeClass().addClass('main-menu-content');
+        menuNavigation.removeClass().addClass('navigation navigation-main');
+
+        // If Mega Menu
+        megaMenu.removeClass('dropdown mega-dropdown').addClass('has-sub');
+        megaMenu.children('ul').removeClass();
+        megaMenuCol.each(function(index, el) {
+
+          // Remove drilldown-menu and menu list
+          var megaMenuSub = $(el).find('.mega-menu-sub');
+          megaMenuSub.find('li').has('ul').addClass('has-sub');
+
+          // if mega menu title is given, remove title and make it list item with mega menu title's text
+          var first_child = $(el).children().first(),
+          first_child_text = '';
+
+          if( first_child.is('h6') ){
+            first_child_text = first_child.html();
+            first_child.remove();
+            $(el).prepend('<a href="#">'+first_child_text+'</a>').addClass('has-sub mega-menu-title');
+          }
+        });
+        megaMenu.find('a').removeClass('dropdown-toggle');
+        megaMenu.find('a').removeClass('dropdown-item');
+
+        // If Dropdown Menu
+        dropdownMenu.removeClass('dropdown').addClass('has-sub');
+        dropdownMenu.find('a').removeClass('dropdown-toggle nav-link');
+        dropdownMenu.children('ul').find('a').removeClass('dropdown-item');
+        dropdownMenu.find('ul').removeClass('dropdown-menu');
+        dropdownSubMenu.removeClass().addClass('has-sub');
+
+        $.app.nav.init();
+
+        // Dropdown submenu on small screen on click
+        // --------------------------------------------------
+        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          $(this).parent().siblings().removeClass('open');
+          $(this).parent().toggleClass('open');
+        });
+      }
+      else{
+        // Change body classes
+        $body.removeClass('vertical-layout vertical-overlay-menu fixed-navbar').addClass($body.data('menu'));
+
+        // Remove navbar-fix-top class on large screens
+        $('nav.header-navbar').removeClass('navbar-fixed-top');
+
+        // Change menu wrapper, menu container, menu navigation classes
+        menuWrapper.removeClass().addClass(menuWrapperClasses);
+
+        // Intitialize drill down menu for horizontal layouts
+        // --------------------------------------------------
+        this.drillDownMenu(screen);
+
+        $('a.dropdown-item.nav-has-children').on('click',function(){
+          event.preventDefault();
+          event.stopPropagation();
+        });
+        $('a.dropdown-item.nav-has-parent').on('click',function(){
+          event.preventDefault();
+          event.stopPropagation();
+        });
+      }
+    },
 
     toggle: function() {
       var currentBreakpoint = Unison.fetch.now(); // Current Breakpoint

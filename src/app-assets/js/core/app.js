@@ -16,7 +16,7 @@
 
     $(window).on('load',function(){
         var rtl;
-        if($('html').data('textdirection') == 'rtl'){
+        if($('html').data('textdirection') == 'RTL'){
             rtl = true;
         }
 
@@ -42,6 +42,64 @@
         $('[data-toggle="tooltip"]').tooltip({
             container:'body'
         });
+
+        // Top Navbars - Hide on Scroll
+        if ($(".navbar-hide-on-scroll").length > 0) {
+            $(".navbar-hide-on-scroll.navbar-fixed-top").headroom({
+              "offset": 205,
+              "tolerance": 5,
+              "classes": {
+                 // when element is initialised
+                initial : "headroom",
+                // when scrolling up
+                pinned : "headroom--pinned-top",
+                // when scrolling down
+                unpinned : "headroom--unpinned-top",
+              }
+            });
+            // Bottom Navbars - Hide on Scroll
+            $(".navbar-hide-on-scroll.navbar-fixed-bottom").headroom({
+              "offset": 205,
+              "tolerance": 5,
+              "classes": {
+                 // when element is initialised
+                initial : "headroom",
+                // when scrolling up
+                pinned : "headroom--pinned-bottom",
+                // when scrolling down
+                unpinned : "headroom--unpinned-bottom",
+              }
+            });
+        }
+
+        //Match content & menu height for content menu
+        setTimeout(function(){
+            if($('body').hasClass('vertical-content-menu')){
+                setContentMenuHeight();
+            }
+        },500);
+        function setContentMenuHeight(){
+            var menuHeight = $('.main-menu').height();
+            var bodyHeight = $('.content-body').height();
+            if(bodyHeight<menuHeight){
+                $('.content-body').css('height',menuHeight);
+            }
+        }
+
+        // Mega menu slick carousel
+        if ($('.responsive-slick').length > 0) {
+            var $megamenuSlick = $('.responsive-slick');
+            $megamenuSlick.slick({
+                rtl: rtl,
+                dots: false,
+                arrows: false,
+                infinite: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+        }
 
         // Collapsible Card
         $('a[data-action="collapse"]').on('click',function(e){
@@ -103,6 +161,7 @@
             card = $this.closest('.card');
             var cardHeight;
 
+            console.log(parseInt(card[0].style.height,10));
             if(parseInt(card[0].style.height,10) > 0){
                 cardHeight = card.css('height');
                 card.css('height','').attr('data-height', cardHeight);
@@ -115,6 +174,14 @@
             }
         });
 
+        //Adjust fixed header body top padding
+        /*if(!$('.header-navbar').hasClass('navbar-fixed-top')){
+            $('body').css('padding-top',0);
+        }*/
+        // Remove the top padding in
+        /*if(! $('.header-navbar').hasClass('navbar-fixed-top')){
+            $('body').css('padding','0');
+        }*/
 
         // Add open class to parent list item if subitem is active except compact menu
         var menuType = $body.data('menu');
@@ -178,8 +245,7 @@
     });
 
     // Add Children Class
-    $('.navigation').addClass('Himanshu');
-    $('.navigation').find('li').has('ul.menu-content').addClass('has-sub');
+    $('.navigation').find('li').has('ul').addClass('has-sub');
 
     $('.carousel').carousel({
       interval: 2000
@@ -205,6 +271,24 @@
             });
         }
     }
+
+    $(document).on('click', '.mega-dropdown-menu', function(e) {
+        e.stopPropagation();
+    });
+
+    $(document).ready(function(){
+
+        /**********************************
+        *   Form Wizard Step Icon
+        **********************************/
+        $('.step-icon').each(function(){
+            var $this = $(this);
+            if($this.siblings('span.step').length > 0){
+                $this.siblings('span.step').empty();
+                $(this).appendTo($(this).siblings('span.step'));
+            }
+        });
+    });
 
     // Update manual scroller when window is resized
     $(window).resize(function() {

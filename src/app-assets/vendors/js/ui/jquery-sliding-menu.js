@@ -21,11 +21,11 @@
 		}
 
 		var settings = $.extend(
-			{
-				dataJSON: false,
-				backLabel: 'Back'
+		{
+			dataJSON: false,
+			backLabel: 'Back'
 
-			}, options);
+		}, options);
 
 		return this.each(function()
 		{
@@ -197,10 +197,10 @@
 					currentPanel = target;
 
 					menu.stop(true, true).animate(
-						{
-							height: target.height()
+					{
+						height: target.height()
 
-						}, 'fast');
+					}, 'fast');
 
 					e.preventDefault();
 				}
@@ -259,11 +259,11 @@
 			if (parent)
 			{
 				root.children.push(
-					{
-						styleClass: 'back',
-						href: '#' + parent.id
+				{
+					styleClass: 'back',
+					href: '#' + parent.id
 
-					});
+				});
 			}
 
 			$(data).each(function(index, item)
@@ -303,7 +303,7 @@
 		function updateWidth(){
 
 			var wrapper = $('.sliding-menu-wrapper'),
-				menuPanels = $('.sliding-menu-wrapper ul');
+			menuPanels = $('.sliding-menu-wrapper ul');
 
 			if(menuPanels.length){
 				setTimeout(function(){

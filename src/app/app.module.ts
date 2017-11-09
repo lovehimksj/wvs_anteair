@@ -8,8 +8,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
 import {routing} from './app.routing';
-import {AdvertiserComponent} from './components/advertiser/advertiser/advertiser.component';
-import {AdminComponent} from './components/admin/campaignDashboard/admin.component';
 import {RegisterComponent} from './components/register/register.component';
 
 
@@ -27,28 +25,34 @@ import {HomeComponent} from './components/home/home.component';
 import {CampaignService} from './service/campaign/campaign.service';
 import {CampaignMapper} from './package/mapper/campaign.mapper';
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
-import {AdvertiserCampaignComponent} from './components/advertiser/advertiser.camapign/advertiser.camapign';
-import { HeaderComponent } from './components/header/header.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { CampaignComponent } from './components/advertiser/campaign/campaign.component';
-import { MerchantBoardingComponent } from './components/merchant-boarding/merchant-boarding.component';
+import {HeaderComponent} from './components/header/header.component';
+import {SideNavComponent} from './components/side-nav/side-nav.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {MerchantBoardingComponent} from './components/merchant-boarding/merchant-boarding.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OrderComponent } from './components/orders/order/order.component';
+import { OrderListComponent } from './components/orders/order-list/order-list.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import {NewOrderComponent} from './components/orders/new-order/new-order.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		AdvertiserComponent,
-		AdminComponent,
 		RegisterComponent,
 		HomeComponent,
 		ForgotPasswordComponent,
-		AdvertiserCampaignComponent,
 		HeaderComponent,
 		SideNavComponent,
 		FooterComponent,
-		CampaignComponent,
-		MerchantBoardingComponent
+		MerchantBoardingComponent,
+		DashboardComponent,
+		OrderComponent,
+		OrderListComponent,
+		OrdersComponent,
+		NewOrderComponent,
+		ProfileComponent
 	],
 	imports: [
 		BrowserModule,

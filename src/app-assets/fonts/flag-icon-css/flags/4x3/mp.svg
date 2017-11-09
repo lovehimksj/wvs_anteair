@@ -15,7 +15,7 @@
    </rdf:Bag>
   </dc:subject>
   <dc:publisher>
-   <cc:Agent rdf:about="http://www.openclipart.org">
+   <cc:Agent rdf:about="http://www.openclipart.org/">
     <dc:title/>
    </cc:Agent>
   </dc:publisher>
