@@ -1,0 +1,46 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="card border-grey border-lighten-3 m-0">
+			<div class="card-header no-border">
+				<div class="card-title text-xs-center">
+					<div class="p-1"><img src="app-assets/images/logo/robust-logo-dark.png" alt="branding logo"></div>
+				</div>
+				<h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login with Anteair User</span>
+				</h6>
+			</div>
+			<div class="card-body collapse in">
+				<div class="card-block">
+					<form name="form" id="loginForm" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate
+					      class="form-horizontal form-simple">
+						<fieldset class="form-group position-relative has-icon-left"
+						          [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+							<input type="text" class="form-control form-control-lg input-lg" name="username"
+							       id="username" placeholder="Your Username" [(ngModel)]="account.username"
+							       #username="ngModel" required>
+							<div class="form-control-position">
+								<i class="icon-head"></i>
+							</div>
+							{{account.username}}
+							<div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+						</fieldset>
+						<fieldset class="form-group position-relative has-icon-left">
+							<input type="password" class="form-control form-control-lg input-lg" id="password"
+							       name="password" placeholder="Enter Password" [(ngModel)]="account.password"
+							       #password="ngModel" required>
+							<div class="form-control-position">
+								<i class="icon-key3"></i>
+							</div>
+							<div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+			<!--<button type="submit" class="btn btn-primary btn-lg btn-block"><i class="icon-unlock2"></i> Login</button>-->
+			<button type="submit" form="loginForm" class="btn btn-outline-primary"><i class="icon-unlock2"></i>Login</button>
+		</div>
+	</div>
+</div>
