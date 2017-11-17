@@ -4,6 +4,7 @@ import {AccessToken} from '../../constructor/token';
 @Injectable()
 export class TokenMapper {
 	public mapResponseToAccessToken(response: any): AccessToken {
+		console.log('inside mapper')
 		const accessToken = new AccessToken();
 		accessToken.accessToken = response['access_token'];
 		accessToken.refreshToken = response['refresh_token'];
@@ -13,7 +14,7 @@ export class TokenMapper {
 		accessToken.tokenType = response['token_type'];
 		accessToken.expiresIn = response['expires_in'];
 		accessToken.issued = new Date();
-		accessToken.expires = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+		accessToken.expires = new Date(new Date().getTime() + 1000 * response['expires_in']);
 		return accessToken;
 	}
 }

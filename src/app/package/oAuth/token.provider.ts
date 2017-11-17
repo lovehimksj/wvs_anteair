@@ -20,17 +20,23 @@ export class TokenProvider {
         if (!accessToken) {
             return Observable.of(null);
         }
+
+
         const now = new Date();
         const expiresIn = (accessToken.expires.getTime() - now.getTime()) / 1000 / 60;
         const useRefreshToken = accessToken.refreshToken && expiresIn < this.refreshTimeout;
+
+
         if (useRefreshToken && expiresIn > 0) {
             return this.refreshToken(accessToken.refreshToken)
                 .do(response => this.sessionService.setSession(response));
         }
+
         if (expiresIn <= 0) {
             this.sessionService.clearSession();
             return Observable.of(null);
         }
+
         return Observable.of(accessToken);
     }
 

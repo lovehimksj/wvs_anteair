@@ -35,6 +35,8 @@ import { OrderListComponent } from './components/orders/order-list/order-list.co
 import { OrdersComponent } from './components/orders/orders.component';
 import {NewOrderComponent} from './components/orders/new-order/new-order.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import {AuthGuard} from './guard/auth.guard';
+import {AuthenticationService} from './service/auth/authentication.service';
 
 @NgModule({
 	declarations: [
@@ -65,6 +67,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 	providers: [
 		UserProvider,
 		RestApi,
+		AuthenticationService,
 		CommunicationService,
 		SessionService,
 		AuthenticationGuard,

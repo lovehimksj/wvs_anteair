@@ -24,7 +24,7 @@ export class AccountService {
 
 	public signIn(account: any): Observable<AccessToken> {
 		const headers = new HttpHeaders()
-			.set('Authorization', 'Basic ' + btoa(account.username + ':' + account.username));
+			.set('Authorization', 'Basic ' + btoa('clientapp' + ':' + '123456'));
 		const uri = this.baseUri() + environment.oAuth + '?&grant_type=password&username=' + account.username + '&password=' + account.password;
 		return this.httpClient.post(uri, null, {headers})
 			.map(response => {
@@ -40,11 +40,6 @@ export class AccountService {
 		this.sessionService.clearSession();
 		this.userProvider.setCurrentUser(null);
 		this.router.navigateByUrl('/')
-	}
-
-	public addAdvertiser(account: any): Observable<any> {
-		const url = environment.addAdvertiser;
-		return this.restApi.post(url, null, account);
 	}
 
 	public getOtp(account: any): Observable<any> {

@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
 		this.isLoading = true;
 		this.errorMessage = '';
 		console.log(this.account.password);
-		this.account.password = sha256(this.account.password);
-		console.log(this.account.password);
-		console.log(this.account.password);
+		// this.account.password = sha256(this.account.password);
+		// console.log(this.account.password);
+		// console.log(this.account.password);
 		this.accountService.signIn(this.account)
 			.finally(() => {
 				this.isLoading = false;

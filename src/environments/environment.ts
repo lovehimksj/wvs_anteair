@@ -5,9 +5,9 @@
 
 export const environment = {
       production: false,
-      productionUrlFalse: 'http://ads.uahoy.in/uadtest/',
-      productionUrlTrue: 'https://ads.uahoy.in/bi/',
-      productionUrlLocal: 'http://192.168.29.201:8080/uadtest/',
+      productionUrlFalse: 'http://localhost:8080/',
+      productionUrlTrue: 'http://localhost:8080/',
+      productionUrlLocal: 'http://localhost:8080/',
       oAuth: 'oauth/token',
       addCampaign: 'addc/?',
       addCampaignCreative: 'acc/?',

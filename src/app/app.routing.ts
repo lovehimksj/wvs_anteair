@@ -5,11 +5,12 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {OrdersComponent} from './components/orders/orders.component';
 import {NewOrderComponent} from './components/orders/new-order/new-order.component';
 import {ProfileComponent} from './components/profile/profile.component';
+import {AuthenticationGuard} from './package/guards/authentication.guard';
 
 export const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
 	{path: 'merchantBoarding', component: MerchantBoardingComponent},
-	{path: 'dashboard', component: DashboardComponent},
+	{path: 'dashboard', component: DashboardComponent, canActivate : [AuthenticationGuard]},
 	{path: 'orders', component: OrdersComponent},
 	{path: 'addOrder', component: NewOrderComponent},
 	{path: 'profile', component: ProfileComponent},

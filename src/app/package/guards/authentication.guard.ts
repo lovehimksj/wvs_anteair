@@ -24,8 +24,8 @@ export class AuthenticationGuard implements CanActivate {
 				if (accessToken != null) {
 					return true;
 				}
-				this.router.navigateByUrl('/');
+				this.router.navigateByUrl('/dashboard');
 				return false;
 			});
-	}
+	}k
 }
