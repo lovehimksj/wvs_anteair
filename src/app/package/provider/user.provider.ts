@@ -30,7 +30,7 @@ export class UserProvider {
 			return null;
 		}
 		const currentUser = this.mapToCurrentUser(accessToken);
-		return currentUser['id'];
+		return currentUser['userId'];
 	}
 
 	public getCurrentUserAsObservable() {
@@ -45,8 +45,7 @@ export class UserProvider {
 		}
 	}
 
-	public updateCurrentUser(propertiesToUpdate: any) {
-		const properties = Object.getOwnPropertyNames(propertiesToUpdate);
+	public updateCurrentUser(propertiesToUpdate: object) {
 		this.sessionService.updateSession(propertiesToUpdate);
 		const currentUser = this.getCurrentUser();
 		this.$state.next(currentUser);
@@ -57,8 +56,9 @@ export class UserProvider {
 			accessToken.userId,
 			accessToken.username,
 			accessToken.scope,
-			// accessToken.isPrivate,
-			// accessToken.isActive,
+			accessToken.is_approved,
+			accessToken.onboardStatus,
+			accessToken.stepStatus,
 			// accessToken.pictureUri
 		);
 		return currentUser;

@@ -11,9 +11,9 @@ export const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
 	{path: 'merchantBoarding', component: MerchantBoardingComponent},
 	{path: 'dashboard', component: DashboardComponent, canActivate : [AuthenticationGuard]},
-	{path: 'orders', component: OrdersComponent},
-	{path: 'addOrder', component: NewOrderComponent},
-	{path: 'profile', component: ProfileComponent},
+	{path: 'orders', component: OrdersComponent, canActivate : [AuthenticationGuard]},
+	{path: 'addOrder', component: NewOrderComponent, canActivate : [AuthenticationGuard]},
+	{path: 'profile', component: ProfileComponent, canActivate : [AuthenticationGuard]},
 	// otherwise redirect to home
 	{path: '**', redirectTo: ''}
 ];

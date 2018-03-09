@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {OrderListComponent} from "../orders/order-list/order-list.component";
-import {OrderComponent} from "../orders/order/order.component";
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +9,12 @@ import {OrderComponent} from "../orders/order/order.component";
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+	  $('.navigation').find('li').has('ul.menu-content').addClass('has-sub');
+  }
 
   ngOnInit() {
+
   }
 
 }

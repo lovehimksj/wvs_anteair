@@ -9,10 +9,14 @@ declare var $ :any;
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+	  $('.navigation').find('li').has('ul.menu-content').addClass('has-sub');
+  }
 
   ngOnInit() {
-    $('.navigation').find('li').has('ul.menu-content').addClass('has-sub');
+  	// $(document).ready(function () {
+		// $('.navigation').find('li').has('ul.menu-content').addClass('has-sub');
+	// });
   }
 
 }

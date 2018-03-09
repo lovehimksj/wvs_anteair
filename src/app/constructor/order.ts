@@ -1,4 +1,5 @@
 export class Order {
+    warehouse_id: number;
 	paymentMode: number;
 	customerName: string;
 	customerAddressFirst: string;
@@ -10,16 +11,17 @@ export class Order {
 	customerContact: string;
 	itemSku: string;
 	itemName: string;
-	itemQuantity: string;
-	itemPrice: string;
-	itemHeight: string;
-	itemWidth: string;
-	itemWeight: string;
-	itemLength: string;
-	codDue: string;
-	orderType: string;
+	itemQuantity: number;
+	itemPrice: number;
+	itemHeight: number;
+	itemWidth: number;
+	itemWeight: number;
+	itemLength: number;
+    total_value: number;
+    order_type: string;
 
 	constructor(paymentMode?: number,
+                warehouseId?: number,
 				customerName?: string,
 				customerAddressFirst?: string,
 				customerAddressSecond?: string,
@@ -30,15 +32,16 @@ export class Order {
 				customerContact?: string,
 				itemSku?: string,
 				itemName?: string,
-				itemQuantity?: string,
-				itemPrice?: string,
-				itemHeight?: string,
-				itemWidth?: string,
-				itemWeight?: string,
-				itemLength?: string,
-				codDue?: string,
+				itemQuantity?: number,
+				itemPrice?: number,
+				itemHeight?: number,
+				itemWidth?: number,
+				itemWeight?: number,
+				itemLength?: number,
+				codDue?: number,
 				orderType?: string
 	) {
+		this.warehouse_id = warehouseId;
 		this.paymentMode = paymentMode;
 		this.customerName = customerName;
 		this.customerAddressFirst = customerAddressFirst;
@@ -56,8 +59,8 @@ export class Order {
 		this.itemWidth = itemWidth;
 		this.itemWeight = itemWeight;
 		this.itemLength = itemLength;
-		this.codDue = codDue;
-		this.orderType = orderType;
+		this.total_value = codDue;
+		this.order_type = orderType;
 
 	}
 }

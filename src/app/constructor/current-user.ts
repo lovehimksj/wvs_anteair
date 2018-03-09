@@ -1,23 +1,22 @@
 export class CurrentUser {
-  public id: number;
-  public username: string;
-  public scope: string;
-  // public isPrivate: boolean;
-  // public isActive: boolean;
-  // public pictureUri: string;
-  constructor(
-    id?: number,
-    username?: string,
-	scope?: string,
-    // isPrivate?: boolean,
-    // isActive?: boolean,
-    // pictureUri?: string
-  ) {
-    this.id = id;
-    this.username = username;
-    this.scope = scope;
-    // this.isPrivate = isPrivate;
-    // this.isActive = isActive;
-    // this.pictureUri = pictureUri;
-  }
+	public userId: number;
+	public username: string;
+	public scope: string;
+	public onboardStatus: boolean;
+	public is_approved: boolean;
+	public stepStatus: string;
+
+	constructor(userId?: number,
+				username?: string,
+				scope?: string,
+				onboardStatus?: boolean,
+				is_approved?: boolean,
+				stepStatus?: string) {
+		this.userId = userId;
+		this.username = username;
+		this.scope = scope;
+		this.onboardStatus = onboardStatus;
+		this.is_approved = is_approved;
+		this.stepStatus = stepStatus;
+	}
 }

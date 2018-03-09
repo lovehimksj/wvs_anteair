@@ -2,7 +2,9 @@
 	/*min-height: 75rem;*/
 	/*padding-top: 4.5rem;*/
 /*}*/
-
+.html body.fixed-navbar {
+	padding-top: 0 !important;
+}
 select.form-control:not([size]):not([multiple]), select.form-control {
 	background-image: url("/app-assets/images/icons/arrow_down_48px.svg");
 	background-repeat: no-repeat;

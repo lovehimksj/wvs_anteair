@@ -17,9 +17,9 @@ export class RestApi {
         return this.httpClient.post<T>(this.baseUri() + requestUri, data, {params : param})
     }
 
-    public put<T>(requestUri, data: any): Observable<T> {
-        return this.httpClient.put<T>(this.baseUri() + requestUri, data)
-    }
+    public put<T>(requestUri: string, param: any, data: any): Observable<T> {
+		return this.httpClient.put<T>(this.baseUri() + requestUri, data, {params : param})
+	}
 
     public patch<T>(requestUri, data: any): Observable<T> {
         return this.httpClient.patch<T>(this.baseUri() + requestUri, data)

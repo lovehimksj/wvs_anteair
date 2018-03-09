@@ -4,13 +4,10 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {CookieModule} from 'ngx-cookie';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
 import {routing} from './app.routing';
 import {RegisterComponent} from './components/register/register.component';
-
-
 import {AuthenticationInterceptor} from './package/oAuth/authentication-interceptor.service';
 import {CommunicationService, RestApi} from './package/communication';
 import {SessionService} from './package/session/session.service';
@@ -37,7 +34,9 @@ import {NewOrderComponent} from './components/orders/new-order/new-order.compone
 import { ProfileComponent } from './components/profile/profile.component';
 import {AuthGuard} from './guard/auth.guard';
 import {AuthenticationService} from './service/auth/authentication.service';
-
+import { KeysPipe } from './pipe/keys.pipe';
+import {MasterService} from './service/masterData/master.service';
+import {NotificationService} from './package/notification/notification.service';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -54,7 +53,8 @@ import {AuthenticationService} from './service/auth/authentication.service';
 		OrderListComponent,
 		OrdersComponent,
 		NewOrderComponent,
-		ProfileComponent
+		ProfileComponent,
+		KeysPipe
 	],
 	imports: [
 		BrowserModule,
@@ -74,6 +74,8 @@ import {AuthenticationService} from './service/auth/authentication.service';
 		AccountService,
 		UserService,
 		CampaignService,
+		MasterService,
+        NotificationService,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthenticationInterceptor,

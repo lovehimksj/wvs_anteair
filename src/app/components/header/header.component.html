@@ -6,7 +6,7 @@
 					<a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a>
 				</li>
 				<li class="nav-item">
-					<a href="index.html" class="navbar-brand nav-link">
+					<a routerLink="/" class="navbar-brand nav-link">
 						<img alt="branding logo" src="app-assets/images/logo/robust-logo-light.png"
 						     data-expand="app-assets/images/logo/robust-logo-light.png"
 						     data-collapse="app-assets/images/logo/robust-logo-small.png" class="brand-logo">
@@ -57,9 +57,9 @@
 							<span class="user-name">Himanshu Maheshwari</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
-							<a href="profile" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a>
-							<a href="transaction" class="dropdown-item"><i class="icon-mail6"></i> My Transaction</a>
-							<a href="fund" class="dropdown-item"><i class="icon-clipboard2"></i>Add Funds</a>
+							<a routerLink="profile" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a>
+							<a routerLink="transaction" class="dropdown-item"><i class="icon-mail6"></i> My Transaction</a>
+							<a routerLink="fund" class="dropdown-item"><i class="icon-clipboard2"></i>Add Funds</a>
 							<div class="dropdown-divider"></div>
 							<a href="javascript:void(0)" class="dropdown-item" (click)="logout()"><i
 								class="icon-power3"></i> Logout</a>

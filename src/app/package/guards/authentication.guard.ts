@@ -21,11 +21,14 @@ export class AuthenticationGuard implements CanActivate {
 				if (accessToken == null && state.url === '/') {
 					return true;
 				}
+				if(accessToken != null && !accessToken.onboardStatus && state.url !== '/profile'){
+					this.router.navigateByUrl('/profile');
+				}
 				if (accessToken != null) {
 					return true;
 				}
-				this.router.navigateByUrl('/dashboard');
+				this.router.navigateByUrl('/');
 				return false;
 			});
-	}k
+	}
 }

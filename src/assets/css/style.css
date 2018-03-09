@@ -1594,3 +1594,8 @@ a:hover {
 		transform: rotate(0deg); }
 	100% {
 		transform: rotate(360deg); } }
+
+
+.custom-file-control:lang(en)::after {
+	content: "" !important;
+}

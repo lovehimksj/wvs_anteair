@@ -1,27 +1,23 @@
 export class UserRegister {
-	advertiserName: string;
-	companyName: string;
-	advertiserEmailId: string;
-	advertiserMobileNumber: string;
+	username: string;
 	password: string;
-	companyWarehouseAddress: string;
-	companyWarehouseCity: string;
+	confirmPassword: string;
+	email: string;
+	mobile: string;
+	name: string;
 
-	constructor(advertiserName?: string,
-				companyName?: string,
-				advertiserEmailId?: string,
-				advertiserMobileNumber?: string,
+	constructor(username?: string,
+                name?: string,
 				password?: string,
-				companyWarehouseAddress?: string,
-				companyWarehouseCity?: string) {
+				confirmPassword?: string,
+				email?: string,
+				mobile?: string) {
 
-		this.advertiserName = advertiserName;
-		this.companyName = companyName;
-		this.advertiserEmailId = advertiserEmailId;
-		this.advertiserMobileNumber = advertiserMobileNumber;
+		this.username = username;
+		this.name = name;
 		this.password = password;
-		this.companyWarehouseAddress = companyWarehouseAddress;
-		this.companyWarehouseCity = companyWarehouseCity;
-
+		this.confirmPassword = confirmPassword;
+		this.email = email;
+		this.mobile = mobile;
 	}
 }

@@ -1,512 +1,525 @@
-
-		
-		<div class="content-body">
-			<!-- Form wizard with step validation section start -->
-			<section id="validation">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="card-title">Validation Example</h4>
-							</div>
-							<div class="card-body collapse in">
-								<div class="card-block">
-									<form class="steps-validation wizard-circle" id="formRegister"
-									      (ngSubmit)="f.form.valid && merchantOnBoard(account)" #f="ngForm" novalidate
-									      autocomplete="off">
-										<!-- Step 1 -->
-										<h6>Step 1</h6>
-										<fieldset>
-											<h5 class="mb-1">Company Information</h5>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="companyName">Company Name :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyName" name="companyName"
-														       [(ngModel)]="account.companyName" #companyName="ngModel">
-													</div>
-												</div>
-												
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="companyType">Select Company Type :
-															<span class="danger">*</span>
-														</label>
-														<select class="custom-select form-control required"
-														        id="companyType" name="companyType"
-														        [(ngModel)]="account.companyTypes"
-														        #companyType="ngModel">
-															<option value="">Select Type</option>
-															<option value="Amsterdam">Amsterdam</option>
-															<option value="Berlin">Berlin</option>
-															<option value="Frankfurt">Frankfurt</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="brandName">Legal Name/ Brand Name :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required" id="brandName"
-														       name="brandName" [(ngModel)]="account.brandName"
-														       #brandName="ngModel">
-													</div>
-												</div>
-												
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="companyWebsite">Website :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyWebsite" name="companyWebsite"
-														       [(ngModel)]="account.companyWebsite"
-														       #companyWebsite="ngModel">
-													</div>
-												</div>
-											</div>
-											
-											<div class="row">
-												<div class="col-md-6 col-lg-6">
-													<div class="form-group">
-														<label for="companyAddress">Address :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyAddress" name="companyAddress"
-														       [(ngModel)]="account.companyAddress"
-														       #companyAddress="ngModel">
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-lg-3">
-													<div class="form-group">
-														<label for="companyPincode">Pincode :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyPincode" name="companyPincode"
-														       [(ngModel)]="account.companyPincode"
-														       #companyPincode="ngModel">
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-lg-3">
-													<div class="form-group">
-														<label for="companyCity">City :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyCity" name="companyCity"
-														       [(ngModel)]="account.companyCity" #companyCity="ngModel">
-													</div>
-												</div>
-											</div>
-											
-											<div class="row">
-												<div class="col-md-6 col-lg-6">
-													<div class="form-group">
-														<label>Company ID Prof</label>
-														<label class="custom-file center-block block"
-														       for="companyIdProf">
-															<input type="file" id="companyIdProf"
-															       class="custom-file-input" name="companyIdProf"
-															       (change)="fileEvent($event,'companyIdProf')">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-lg-6">
-													<div class="form-group">
-														<label>Company Address Prof</label>
-														<label class="custom-file center-block block"
-														       for="companyAddressProf">
-															<input type="file" id="companyAddressProf"
-															       class="custom-file-input" name="companyAddressProf"
-															       (change)="fileEvent($event,'companyAddressProf')">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>
-												
-												<!--<div class="col-md-6 col-lg-4">
-													<div class="form-group">
-														<label>Company ID Prof</label>
-														<label class="custom-file center-block block" for="companyIdProf">
-															<input type="file" id="companyIdProf" class="custom-file-input" [(ngModel)]="account.companyIdProf" #companyIdProf="ngModel">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>-->
-											</div>
-											
-											<div class="row">
-												<div class="col-md-6 col-lg-4">
-													<div class="form-group">
-														<label>Upload PAN Card</label>
-														<label class="custom-file center-block block"
-														       for="companyPanCardFile">
-															<input type="file" id="companyPanCardFile"
-															       class="custom-file-input" name="companyPanCardFile"
-															       (change)="fileEvent($event,'companyPanCardFile')">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-lg-4">
-													<div class="form-group">
-														<label>Upload GSTIN</label>
-														<label class="custom-file center-block block"
-														       for="companyGstinFile">
-															<input type="file" id="companyGstinFile"
-															       class="custom-file-input" name="companyGstinFile"
-															       (change)="fileEvent($event,'companyGstinFile')">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-lg-4">
-													<div class="form-group">
-														<label>Upload TAN Card</label>
-														<label class="custom-file center-block block"
-														       for="companyPanCardFile">
-															<input type="file" id="companyTanCardFile"
-															       class="custom-file-input" name="companyTanCardFile"
-															       (change)="fileEvent($event,'companyTanCardFile')">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>
-											</div>
-											
-											<div class="row">
-												<div class="col-md-6 col-lg-4">
-													<div class="form-group">
-														<label for="companyPanNumber">PAN Card :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyPanNumber" name="companyPanNumber"
-														       [(ngModel)]="account.companyPanNumber"
-														       #companyPanNumber="ngModel">
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-lg-4">
-													<div class="form-group">
-														<label for="companyGstNumber">GSTIN :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyGstNumber" name="companyGstNumber"
-														       [(ngModel)]="account.companyGstNumber"
-														       #companyGstNumber="ngModel">
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-lg-4">
-													<div class="form-group">
-														<label for="companyTanNumber">TAN :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyTanNumber" name="companyTanNumber"
-														       [(ngModel)]="account.companyTanNumber"
-														       #companyTanNumber="ngModel">
-													</div>
-												</div>
-											</div>
-											
-											<div class="row skin skin-square mb-1">
-												<div class="col-md-12 col-sm-12 col-lg-12">
-													<label for="companyTanNumber">Service Type :<span
-														class="danger">*</span></label>
-													<div class="">
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span class="custom-control-description ml-0">COD</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span class="custom-control-description ml-0">PREPAID</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span
-																class="custom-control-description ml-0">Same day</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span class="custom-control-description ml-0">air</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span class="custom-control-description ml-0">surface</span>
-														</label>
-														
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span class="custom-control-description ml-0">Full trcuk load</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span class="custom-control-description ml-0">Train</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span class="custom-control-description ml-0">Bulk</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span
-																class="custom-control-description ml-0">Cold chain</span>
-														</label>
-														<label class="inline custom-control custom-checkbox block">
-															<input type="checkbox" class="custom-control-input">
-															<span class="custom-control-indicator"></span>
-															<span
-																class="custom-control-description ml-0">International</span>
-														</label>
-													</div>
-												</div>
-											</div>
-										</fieldset>
-										<!-- Step 2 -->
-										<h6>Step 2</h6>
-										<fieldset>
-											<h5 class="mb-1">Bank Details</h5>
-											<div class="row">
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyAccountName">A/c Name :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyAccountName" name="companyAccountName"
-														       [(ngModel)]="account.companyAccountName"
-														       #companyAccountName="ngModel">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyAccountNumber">A/c Number :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyAccountNumber" name="companyAccountNumber"
-														       [(ngModel)]="account.companyAccountNumber"
-														       #companyAccountNumber="ngModel">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyAccountIfscCode">Bank IFSC Code :
-															<span class="danger">*</span>
-														</label>
-														<input type="url" class="form-control required"
-														       id="companyAccountIfscCode" name="companyAccountIfscCode"
-														       [(ngModel)]="account.companyAccountIfscCode"
-														       #companyAccountIfscCode="ngModel">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyBankBranchName">Branch Name :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyBankBranchName" name="companyBankBranchName"
-														       [(ngModel)]="account.companyBankBranchName"
-														       #companyBankBranchName="ngModel">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyAccountType">Select A/c Type :
-															<span class="danger">*</span>
-														</label>
-														<select class="custom-select form-control required"
-														        id="companyAccountType" name="companyAccountType"
-														        [(ngModel)]="account.companyAccountType"
-														        #companyAccountType="ngModel">
-															<option value="">Select Type</option>
-															<option value="Amsterdam">Amsterdam</option>
-															<option value="Berlin">Berlin</option>
-															<option value="Frankfurt">Frankfurt</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label>Upload Cancel Cheque :
-															<span class="danger">*</span>
-														</label>
-														<label class="custom-file center-block block"
-														       for="companyAccountCancelCheque">
-															<input type="file" id="companyAccountCancelCheque"
-															       class="custom-file-input"
-															       name="companyAccountCancelCheque"
-															       (change)="fileEvent($event,'companyAccountCancelCheque')">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>
-											</div>
-										</fieldset>
-										<h6>Step 3</h6>
-										<fieldset>
-											<h5 class="mb-1">Warehouse Details</h5>
-											<div class="row">
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyWarehouseAddress">Address :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyWarehouseAddress"
-														       name="companyWarehouseAddress"
-														       [(ngModel)]="account.companyWarehouseAddress"
-														       #companyWarehouseAddress="ngModel">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-3">
-													<div class="form-group">
-														<label for="companyWarehouseCity">City :
-															<span class="danger">*</span>
-														</label>
-														<input type="text" class="form-control required"
-														       id="companyWarehouseCity" name="companyWarehouseCity"
-														       [(ngModel)]="account.companyWarehouseCity"
-														       #companyWarehouseCity="ngModel">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-3">
-													<div class="form-group">
-														<label for="companyWarehouseState">State
-															:</label>
-														<select class="custom-select form-control"
-														        id="companyWarehouseState"
-														        name="companyWarehouseState"
-														        [(ngModel)]="account.companyWarehouseState"
-														        #companyWarehouseState="ngModel">
-															<option value="">Select State</option>
-															<option value="Amsterdam">Amsterdam</option>
-															<option value="Berlin">Berlin</option>
-															<option value="Frankfurt">Frankfurt</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyWarehouseContactPersonName">Contact
-															Name :
-															<span class="danger">*</span>
-														</label>
-														<div class='input-group'>
-															<input type="text" class="form-control required"
-															       id="companyWarehouseContactPersonName"
-															       name="companyWarehouseContactPersonName"
-															       [(ngModel)]="account.companyWarehouseContactPersonName"
-															       #companyWarehouseContactPersonName="ngModel">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-6">
-													<div class="form-group">
-														<label for="companyWarehouseContactNumber">Contact
-															Number :
-															<span class="danger">*</span>
-														</label>
-														<div class='input-group'>
-															<input type="text" class="form-control required"
-															       id="companyWarehouseContactNumber"
-															       name="companyWarehouseContactNumber"
-															       [(ngModel)]="account.companyWarehouseContactNumber"
-															       #companyWarehouseContactNumber="ngModel">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-4">
-													<div class="form-group">
-														<label for="companyWarehouseContactNumber">Default Pickup :
-															<span class="danger">*</span>
-														</label>
-														<div class='input-group'>
-															<input type="text" class="form-control required"
-															       id="companyWarehouseDefaultPickup"
-															       name="companyWarehouseDefaultPickup"
-															       [(ngModel)]="account.companyWarehouseDefaultPickup"
-															       #companyWarehouseDefaultPickup="ngModel">
-														</div>
-													</div>
-												</div>
-												
-												<div class="col-md-6 col-sm-12 col-lg-4">
-													<div class="form-group">
-														<label for="companyWarehouseDefaultBilling">Default Billing :
-															<span class="danger">*</span>
-														</label>
-														<div class='input-group'>
-															<input type="text" class="form-control required"
-															       id="companyWarehouseDefaultBilling"
-															       name="companyWarehouseDefaultBilling"
-															       [(ngModel)]="account.companyWarehouseDefaultBilling"
-															       #companyWarehouseDefaultBilling="ngModel">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12 col-lg-4">
-													<div class="form-group">
-														<label>Address Proof :
-															<span class="danger">*</span>
-														</label>
-														<label class="custom-file center-block block"
-														       for="companyWarehouseAddressProof">
-															<input type="file" id="companyWarehouseAddressProof"
-															       class="custom-file-input"
-															       name="companyWarehouseAddressProof"
-															       (change)="fileEvent($event,'companyWarehouseAddressProof')">
-															<span class="custom-file-control"></span>
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-12 col-sm-12 col-lg-12">
-													<div class="form-group">
-														<button type="button"
-														        class="btn btn-secondary btn-min-width mr-1 mt-1 pull-right"><i
-															class="icon-vertical_align_bottom"></i>Add Warehouse
-														</button>
-													</div>
-												</div>
-											</div>
-										</fieldset>
-										<input type="submit" form="formRegister" class="submitForm">
-									</form>
+<div class="content-body">
+	<!-- Form wizard with step validation section start -->
+	<section id="validation">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="card-block" *ngIf="step1">
+					<form class="steps-validation wizard-circle" id="formRegister"
+					      (ngSubmit)="f.form.valid && merchantCompanyDetails(account)" #f="ngForm" novalidate
+					      autocomplete="off">
+						<fieldset>
+							<h5 class="mb-1">Company Information</h5>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="company_name">Company Name :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="company_name" name="company_name"
+										       [(ngModel)]="account.company_name" #company_name="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="company_type_id">Select Company Type :
+											<span class="danger">*</span>
+										</label>
+										<select class="custom-select form-control required"
+										        id="company_type_id" name="company_type_id"
+										        [(ngModel)]="account.company_type_id"
+										        #company_type_id="ngModel">
+											<option [ngValue]="null" selected disabled>Select Option</option>
+											<option *ngFor="let c of companyType" [ngValue]="c.key">{{c.value}}</option>
+										</select>
+									</div>
 								</div>
 							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="brand_name">Legal Name/ Brand Name :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required" id="brand_name"
+										       name="brand_name" [(ngModel)]="account.brand_name"
+										       #brand_name="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="website">Website :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="website" name="website"
+										       [(ngModel)]="account.website"
+										       #website="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="address">Address :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="address" name="address"
+										       [(ngModel)]="account.address"
+										       #address="ngModel">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="state_id">Select State :
+											<span class="danger">*</span>
+										</label>
+										<select class="custom-select form-control required"
+										        id="state_id" name="state_id"
+										        [(ngModel)]="account.state_id"
+										        #state_id="ngModel">
+											<option [ngValue]="null" selected disabled>Select Type</option>
+											<option *ngFor="let state of state_list" value="{{state.key}}">
+												{{state.value}}
+											</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="city_id">Select City :
+											<span class="danger">*</span>
+										</label>
+										<select class="custom-select form-control required"
+										        id="city_id" name="city_id"
+										        [(ngModel)]="account.city_id"
+										        #city_id="ngModel">
+											<option [ngValue]="null" selected disabled>Select Type</option>
+											<option *ngFor="let city of city_list" value="{{city.id}}">{{city.name}}
+											</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="pin">Pincode :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="pin" name="pin"
+										       [(ngModel)]="account.pin"
+										       #pin="ngModel">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="form-group">
+										<label>Company ID Prof</label>
+										<label class="custom-file center-block block"
+										       for="companyIdProf">
+											<input type="file" id="companyIdProf"
+											       class="custom-file-input" name="companyIdProf"
+											       (change)="fileEvent($event,'company_id_proof_mul')">
+											<span class="custom-file-control">{{filename['company_id_proof_mul']}}</span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-lg-6">
+									<div class="form-group">
+										<label>Company Address Prof</label>
+										<label class="custom-file center-block block"
+										       for="companyAddressProf">
+											<input type="file" id="companyAddressProf"
+											       class="custom-file-input" name="companyAddressProf"
+											       (change)="fileEvent($event,'address_proof_mul')">
+											<span class="custom-file-control">{{filename["address_proof_mul"]}}</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label>Upload PAN Card</label>
+										<label class="custom-file center-block block"
+										       for="companyPanCardFile">
+											<input type="file" id="companyPanCardFile"
+											       class="custom-file-input" name="companyPanCardFile"
+											       (change)="fileEvent($event,'pancard_mul')">
+											<span class="custom-file-control">{{filename['pancard_mul']}}</span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label>Upload GSTIN</label>
+										<label class="custom-file center-block block"
+										       for="companyGstinFile">
+											<input type="file" id="companyGstinFile"
+											       class="custom-file-input" name="companyGstinFile"
+											       (change)="fileEvent($event,'gstin_mul')">
+											<span class="custom-file-control">{{filename['gstin_mul']}}</span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label>Upload TAN Card</label>
+										<label class="custom-file center-block block"
+										       for="companyTanCardFile">
+											<input type="file" id="companyTanCardFile"
+											       class="custom-file-input" name="companyTanCardFile"
+											       (change)="fileEvent($event,'tan_number_mul')">
+											<span class="custom-file-control">{{filename['tan_number_mul']}}</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							
+							<!--<div class="row">
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="companyPanNumber">PAN Card :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="companyPanNumber" name="companyPanNumber"
+										       [(ngModel)]="account.companyPanNumber"
+										       #companyPanNumber="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="companyGstNumber">GSTIN :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="companyGstNumber" name="companyGstNumber"
+										       [(ngModel)]="account.companyGstNumber"
+										       #companyGstNumber="ngModel">
+									</div>
+								</div>
+								
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label for="companyTanNumber">TAN :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="companyTanNumber" name="companyTanNumber"
+										       [(ngModel)]="account.companyTanNumber"
+										       #companyTanNumber="ngModel">
+									</div>
+								</div>
+							</div>-->
+							
+							<div class="row skin skin-square mb-1">
+								<div class="col-md-12 col-sm-12 col-lg-12">
+									<label for="">Service Type :<span
+										class="danger">*</span></label>
+									<div class="">
+										<label class="inline custom-control custom-checkbox block"
+										       *ngFor="let x of serviceType">
+											<input type="checkbox" class="custom-control-input"
+											       name="serviceType_{{x.key}}" (change)="selectService($event, x.key)">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">{{x.value}}</span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<div class="form-actions">
+							<div class="right">
+								<button type="button" class="btn btn-warning mr-1">
+									<i class="icon-cross2"></i> Cancel
+								</button>
+								<button type="submit" class="btn btn-primary">
+									<i class="icon-check2"></i> Save
+								</button>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
-			</section>
+				<div class="card-block" *ngIf="step2">
+					<form class="steps-validation wizard-circle" id="formBankDetails"
+					      (ngSubmit)="f.form.valid && merchantBankDetails(account)" #f="ngForm" novalidate
+					      autocomplete="off">
+						<!-- Step 2  merchantBankDetails-->
+						<fieldset>
+							<h5 class="mb-1">Bank Details</h5>
+							<div class="row">
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="account_name">A/c Name :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="account_name" name="account_name"
+										       [(ngModel)]="account.account_name"
+										       #account_name="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="account_number">A/c Number :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="account_number" name="account_number"
+										       [(ngModel)]="account.account_number"
+										       #account_number="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="ifsc_code">Bank IFSC Code :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="ifsc_code" name="ifsc_code"
+										       [(ngModel)]="account.ifsc_code"
+										       #ifsc_code="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="branch_name">Branch Name :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="branch_name" name="branch_name"
+										       [(ngModel)]="account.branch_name"
+										       #branch_name="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="account_type_id">Select A/c Type :
+											<span class="danger">*</span>
+										</label>
+										<select class="custom-select form-control required"
+										        id="account_type_id" name="account_type_id"
+										        [(ngModel)]="account.account_type_id"
+										        #account_type_id="ngModel">
+											<option value="">Select Type</option>
+											<option value="1">Amsterdam</option>
+											<option value="2">Berlin</option>
+											<option value="3">Frankfurt</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label>Upload Cancel Cheque :
+											<span class="danger">*</span>
+										</label>
+										<label class="custom-file center-block block"
+										       for="cancel_cheque_mul">
+											<input type="file" id="cancel_cheque_mul"
+											       class="custom-file-input"
+											       name="cancel_cheque_mul"
+											       (change)="fileEvent($event,'cancel_cheque_mul')">
+											<!--<span class="custom-file-control">{{filename.cancel_cheque_mul}}</span>-->
+										</label>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<div class="form-actions">
+							<div class="right">
+								<button type="button" class="btn btn-warning mr-1">
+									<i class="icon-cross2"></i> Cancel
+								</button>
+								<button type="submit" class="btn btn-primary">
+									<i class="icon-check2"></i> Save
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="card-block" *ngIf="step3">
+					<form class="steps-validation wizard-circle" id="wareHouseDetails"
+					      (ngSubmit)="f.form.valid && merchantWareHouse(account)" #f="ngForm" novalidate
+					      autocomplete="off">
+						<fieldset>
+							<h5 class="mb-1">Warehouse Details</h5>
+							<div class="row" *ngFor="let r of rows">
+								
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="contact_name">Contact
+											Name :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="contact_name"
+										       name="contact_name"
+										       [(ngModel)]="account.contact_name"
+										       #contact_name="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="contact_number">Contact
+											Number :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="contact_number"
+										       name="contact_number"
+										       [(ngModel)]="account.contact_number"
+										       #contact_number="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="address_one">Address one:
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="address_one"
+										       name="address_one"
+										       [(ngModel)]="account.address_one"
+										       #address_one="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="address_two">Address two:
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="address_two"
+										       name="address_two"
+										       [(ngModel)]="account.address_two"
+										       #address_two="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-3">
+									<div class="form-group">
+										<label for="warehouse_state_id">Select State :
+											<span class="danger">*</span>
+										</label>
+										<select class="custom-select form-control required"
+										        id="warehouse_state_id" name="warehouse_state_id"
+										        [(ngModel)]="account.warehouse_state_id"
+										        #warehouse_state_id="ngModel">
+											<option value="" selected="selected">Select Type</option>
+											<option *ngFor="let state of state_list" value="{{state.key}}">{{state.value}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-3">
+									<div class="form-group">
+										<label for="warehouse_city_id">Select City :
+											<span class="danger">*</span>
+										</label>
+										<select class="custom-select form-control required"
+										        id="warehouse_city_id" name="warehouse_city_id"
+										        [(ngModel)]="account.warehouse_city_id"
+										        #warehouse_city_id="ngModel">
+											<option value="" selected="selected">Select Type</option>
+											<option *ngFor="let city of city_list" value="{{city.id}}">{{city.name}}
+											</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-3">
+									<div class="form-group">
+										<label for="warehouse_pin">Pincode :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="warehouse_pin"
+										       name="warehouse_pin"
+										       [(ngModel)]="account.warehouse_pin"
+										       #warehouse_pin="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-3">
+									<div class="form-group">
+										<label>Address Proof :
+											<span class="danger">*</span>
+										</label>
+										<label class="custom-file center-block block"
+										       for="wareHouse_address_proof_mul">
+											<input type="file" id="wareHouse_address_proof_mul"
+											       class="custom-file-input"
+											       name="wareHouse_address_proof_mul"
+											       (change)="fileEvent($event,'wareHouse_address_proof_mul')">
+											<span class="custom-file-control">{{filename['wareHouse_address_proof_mul']}}</span>
+										</label>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									
+									<div class="form-group">
+										<label for="default_pickup">Default Pickup :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="default_pickup"
+										       name="default_pickup"
+										       [(ngModel)]="account.default_pickup"
+										       #default_pickup="ngModel">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-lg-6">
+									<div class="form-group">
+										<label for="default_billing">Default Billing :
+											<span class="danger">*</span>
+										</label>
+										<input type="text" class="form-control required"
+										       id="default_billing"
+										       name="default_billing"
+										       [(ngModel)]="account.default_billing"
+										       #default_billing="ngModel">
+									
+									</div>
+								</div>
+							</div>
+							<!--<div class="row">
+								<div class="col-md-12 col-sm-12 col-lg-12">
+									<div class="form-group">
+										<button type="button"
+										        class="btn btn-secondary btn-min-width mr-1 mt-1 pull-right"
+										        (click)="addMoreWarehouse(rows.length)"><i
+											class="icon-vertical_align_bottom"></i>Add Warehouse
+										</button>
+									</div>
+								</div>
+							</div>-->
+						</fieldset>
+						<div class="form-actions">
+							<div class="right">
+								<button type="button" class="btn btn-warning mr-1">
+									<i class="icon-cross2"></i> Cancel
+								</button>
+								<button type="submit" class="btn btn-primary">
+									<i class="icon-check2"></i> Save
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="card-block" *ngIf="step4">
+					Please connect with us
+				</div>
+			</div>
 		</div>
+	</section>
+</div>
