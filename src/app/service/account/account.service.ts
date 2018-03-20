@@ -3,12 +3,12 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TokenMapper} from '../../package/mapper/token.mapper';
 import {UserProvider} from '../../package/provider/user.provider';
 import {Observable} from 'rxjs/Observable';
-import {AccessToken} from '../../constructor/token';
+import {AccessToken} from '../../constructor';
 import {environment} from '../../../environments/environment';
 import {CurrentUser} from '../../constructor/current-user';
 import {SessionService} from '../../package/session/session.service';
 import {Router} from '@angular/router';
-import {RestApi} from '../../package/communication/rest.api';
+import {RestApi} from '../../package/communication/';
 
 @Injectable()
 export class AccountService {

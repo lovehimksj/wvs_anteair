@@ -37,6 +37,7 @@ import {AuthenticationService} from './service/auth/authentication.service';
 import { KeysPipe } from './pipe/keys.pipe';
 import {MasterService} from './service/masterData/master.service';
 import {NotificationService} from './package/notification/notification.service';
+import {OrderService} from './service/order/order.service';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -76,6 +77,7 @@ import {NotificationService} from './package/notification/notification.service';
 		CampaignService,
 		MasterService,
         NotificationService,
+        OrderService,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthenticationInterceptor,

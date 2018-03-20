@@ -9,7 +9,7 @@ export class Order {
 	customerState: string;
 	customerPinCode: string;
 	customerContact: string;
-	itemSku: string;
+	itemSku: number;
 	itemName: string;
 	itemQuantity: number;
 	itemPrice: number;
@@ -30,7 +30,7 @@ export class Order {
 				customerState?: string,
 				customerPinCode?: string,
 				customerContact?: string,
-				itemSku?: string,
+				itemSku?: number,
 				itemName?: string,
 				itemQuantity?: number,
 				itemPrice?: number,

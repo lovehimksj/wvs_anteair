@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Order} from '../../../constructor/order';
 import {UserService} from '../../../service/user/user.service';
+import {OrderService} from '../../../service/order/order.service';
 
 @Component({
 	selector: 'app-order',
@@ -10,7 +11,7 @@ import {UserService} from '../../../service/user/user.service';
 export class OrderComponent implements OnInit {
     public wareHouseList: any[] = [];
     public order: Order = new Order();
-    constructor(private user: UserService) {
+    constructor(private user: UserService, private orderService: OrderService) {
     }
 
     ngOnInit() {
@@ -25,6 +26,11 @@ export class OrderComponent implements OnInit {
 
     createOrder() {
         console.log(this.order);
+        this.orderService.createNewOrder(this.order).subscribe( value => {
+            console.log(value);
+        }, error2 => {
+            console.log(error2);
+        })
     }
 
 }

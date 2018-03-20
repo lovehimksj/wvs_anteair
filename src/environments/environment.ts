@@ -17,6 +17,7 @@ export const environment = {
 	Get_All_Company_Type: '/master/common/allcompanytype',
 	Get_Services: '/master/common/getservices',
 	Get_State: '/master/common/getstate',
+    Add_Order: 'api/order',
 	addCampaign: 'addc/?',
 	addCampaignCreative: 'acc/?',
 	addAdvertiserRawCreative: 'addarc/?',
