@@ -17,6 +17,38 @@ export class LoginComponent implements OnInit {
     private isLoading = false;
     private error: string;
     public account: UserLogin = new UserLogin();
+<<<<<<< HEAD
+
+    constructor(private accountService: AccountService, private router: Router, private notification: NotificationService) {
+    }
+
+    ngOnInit() {
+        // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        // console.log(this.returnUrl);
+    }
+
+    login() {
+        this.isLoading = true;
+        this.error = '';
+        this.accountService.signIn(this.account)
+            .finally(() => {
+                this.isLoading = false;
+                $('#loginModal').modal('hide');
+            })
+            .subscribe(response => {
+                console.log(response.scope);
+                if (response.scope === 'ROLE_USER') {
+                    if (response['onboardStatus']) {
+                        this.router.navigateByUrl('/dashboard');
+                    } else {
+                        this.router.navigateByUrl('/profile');
+                    }
+                } else if (response.scope === 'ROLE_ADMIN') {
+                    this.router.navigateByUrl('/admin/dashboard');
+                }
+                this.notification.showSuccess(`Success`, `User Logged in successfully`);
+
+=======
 
     constructor(private accountService: AccountService, private router: Router, private notification: NotificationService) {
     }
@@ -41,6 +73,7 @@ export class LoginComponent implements OnInit {
                 } else {
                     this.router.navigateByUrl('/profile');
                 }
+>>>>>>> origin/Developer
             }, error => {
                 this.error = error.error;
                 this.notification.showError(`${this.error['error']}`, `${this.error['error_description']}`);

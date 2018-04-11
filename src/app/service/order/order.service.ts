@@ -8,6 +8,8 @@ export class OrderService {
 
     constructor(private restApi: RestApi) {
     }
+<<<<<<< HEAD
+=======
     /*"awb_id": "string",
             "catg_pkg": "string",
             "courier_id": 0,
@@ -33,6 +35,7 @@ export class OrderService {
     paymentMode:undefined
     :undefined
     warehouse_id:undefined*/
+>>>>>>> origin/Developer
 
     public createNewOrder(account: any): Observable<any> {
         const url = `${environment.Add_Order}`;
@@ -47,12 +50,21 @@ export class OrderService {
         formData.append('pkg_hight', account.itemHeight);
         formData.append('pkg_length', account.itemLength);
         formData.append('pkg_name', account.itemName);
+<<<<<<< HEAD
+        formData.append('warehouse_id', account.warehouse_id);
+        formData.append('service_id', account.paymentMode);
+=======
 
+>>>>>>> origin/Developer
         formData.append('order_quantity', account.itemQuantity);
         formData.append('total_value', account.total_value);
         formData.append('order_type', account.order_type);
         formData.append('pkg_name', account.itemName);
+<<<<<<< HEAD
+        formData.append('catg_pkg', 'test');
+=======
 
+>>>>>>> origin/Developer
         console.log(JSON.stringify(formData));
         return this.restApi.post(url, null, formData);
     }

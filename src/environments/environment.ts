@@ -5,9 +5,15 @@
 
 export const environment = {
 	production: false,
+<<<<<<< HEAD
+	productionUrlFalse: 'http://172.104.32.57:8383/',
+	productionUrlTrue: 'http://172.104.32.57:8383/',
+	productionUrlLocal: 'http://172.104.32.57:8383/',
+=======
 	productionUrlFalse: 'http://localhost:8383/',
 	productionUrlTrue: 'http://localhost:8383/',
 	productionUrlLocal: 'http://localhost:8383/',
+>>>>>>> origin/Developer
 	oAuth: 'oauth/token',
 	register: 'register',
 	Add_Company: 'api/addcompany',
@@ -17,6 +23,10 @@ export const environment = {
 	Get_All_Company_Type: '/master/common/allcompanytype',
 	Get_Services: '/master/common/getservices',
 	Get_State: '/master/common/getstate',
+<<<<<<< HEAD
+	Get_City_By_State: '/master/common/getcity/',
+=======
+>>>>>>> origin/Developer
     Add_Order: 'api/order',
 	addCampaign: 'addc/?',
 	addCampaignCreative: 'acc/?',
