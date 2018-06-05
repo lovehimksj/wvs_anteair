@@ -38,10 +38,10 @@ import { KeysPipe } from './pipe/keys.pipe';
 import {MasterService} from './service/masterData/master.service';
 import {NotificationService} from './package/notification/notification.service';
 import {OrderService} from './service/order/order.service';
-<<<<<<< HEAD
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-=======
->>>>>>> origin/Developer
+import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
+import { WalletRechargeComponent } from './components/wallet-recharge/wallet-recharge.component';
+import {WalletService} from "./service/wallet/wallet.service";
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -59,12 +59,10 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 		OrdersComponent,
 		NewOrderComponent,
 		ProfileComponent,
-<<<<<<< HEAD
 		KeysPipe,
-		AdminDashboardComponent
-=======
-		KeysPipe
->>>>>>> origin/Developer
+		AdminDashboardComponent,
+		AdminNavComponent,
+		WalletRechargeComponent
 	],
 	imports: [
 		BrowserModule,
@@ -87,10 +85,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 		MasterService,
         NotificationService,
         OrderService,
-<<<<<<< HEAD
         AdminAuthGuard,
-=======
->>>>>>> origin/Developer
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthenticationInterceptor,
@@ -99,7 +94,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 		TokenProvider,
 		TokenMapper,
 		CampaignMapper,
-		UserMapper
+		UserMapper,
+        WalletService
 	],
 	bootstrap: [AppComponent]
 })

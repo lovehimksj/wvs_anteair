@@ -31,7 +31,6 @@ export class AuthenticationGuard implements CanActivate {
 				return false;
 			});
 	}
-<<<<<<< HEAD
 }
 
 
@@ -63,6 +62,4 @@ export class AdminAuthGuard implements CanActivate {
                 return false;
             });
     }
-=======
->>>>>>> origin/Developer
 }

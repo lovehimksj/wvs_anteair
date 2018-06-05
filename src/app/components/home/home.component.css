@@ -123,11 +123,7 @@ main {
 	width: 100%;
 	float: left;
 	position: relative;
-<<<<<<< HEAD
-	/*background: url(../../../images/bg/corporate.jpg) top fixed;*/
-=======
 	background: url(../../../images/bg/corporate.jpg) top fixed;
->>>>>>> origin/Developer
 	background-size: cover;
 	height: 100%;
 }
@@ -292,11 +288,7 @@ ul.icon-list {
 }
 
 .third-img {
-<<<<<<< HEAD
-	/*background: url(../../../images/bg/corporate.jpg) top fixed;*/
-=======
 	background: url(../../../images/bg/corporate.jpg) top fixed;
->>>>>>> origin/Developer
 	background-size: cover;
 }
 
@@ -357,11 +349,7 @@ ul.icon-list {
 
 .fourth-img {
 	padding: 110px 0 80px;
-<<<<<<< HEAD
-	/*background-image: url(../../../images/bg/world-map.png);*/
-=======
 	background-image: url(../../../images/bg/world-map.png);
->>>>>>> origin/Developer
 	background-size: cover;
 }
 

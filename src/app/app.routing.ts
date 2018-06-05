@@ -7,6 +7,7 @@ import {NewOrderComponent} from './components/orders/new-order/new-order.compone
 import {ProfileComponent} from './components/profile/profile.component';
 import {AdminAuthGuard, AuthenticationGuard} from './package/guards/authentication.guard';
 import {AdminDashboardComponent} from './components/admin-dashboard/admin-dashboard.component';
+import {WalletRechargeComponent} from "./components/wallet-recharge/wallet-recharge.component";
 
 export const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
@@ -15,16 +16,11 @@ export const appRoutes: Routes = [
 	{path: 'orders', component: OrdersComponent, canActivate : [AuthenticationGuard]},
 	{path: 'addOrder', component: NewOrderComponent, canActivate : [AuthenticationGuard]},
 	{path: 'profile', component: ProfileComponent, canActivate : [AuthenticationGuard]},
-<<<<<<< HEAD
-	{path: 'admin', children: [
-	    {path: 'dashboard', component: AdminDashboardComponent}
-	    ]
-    },
-=======
->>>>>>> origin/Developer
+    {path: 'admin/dashboard', component: AdminDashboardComponent},
+    {path: 'admin/walletRecharge', component: WalletRechargeComponent},
 	// otherwise redirect to home
 	{path: '**', redirectTo: ''}
 ];
 
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes, {useHash: true, enableTracing: true});

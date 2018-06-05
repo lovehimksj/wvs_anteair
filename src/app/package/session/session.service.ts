@@ -23,10 +23,7 @@ export class SessionService {
 		accessToken.onboardStatus = data.onboardStatus;
 		accessToken.is_approved = data.is_approved;
 		accessToken.stepStatus = data.stepStatus;
-<<<<<<< HEAD
 		accessToken.scope = data.scope;
-=======
->>>>>>> origin/Developer
 
 		// return access token
 		return accessToken;

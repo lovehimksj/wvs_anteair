@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import {CommunicationService} from '../communication';
-import {AccessToken} from '../../constructor/token';
+import {AccessToken} from '../../constructor';
 import {TokenProvider} from './token.provider';
 import {SessionService} from '../session/session.service';
 

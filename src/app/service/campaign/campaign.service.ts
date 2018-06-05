@@ -36,6 +36,7 @@ export class CampaignService {
 	public updateCampaignStatusById(aId: string, cId: string, cStatus: string) {
 		const url = environment.updateStatus;
 		const requestParam = new HttpParams().set('status', cStatus).set('cid', cId).set('aid', aId);
-		return this.restApi.post(url, requestParam, null);
+        const header = {'content-type': undefined};
+		return this.restApi.post(url, requestParam, null, header);
 	}
 }

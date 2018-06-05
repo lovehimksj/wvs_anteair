@@ -9,11 +9,7 @@ export class TokenMapper {
 		accessToken.accessToken = response['access_token'];
 		accessToken.refreshToken = response['refresh_token'];
 		accessToken.userId = Number(response['id']);
-<<<<<<< HEAD
 		accessToken.scope = response['role'][0]['authority'];
-=======
-		accessToken.scope = response['scope'];
->>>>>>> origin/Developer
 		accessToken.username = response['username'];
 		accessToken.tokenType = response['token_type'];
 		accessToken.expiresIn = response['expires_in'];

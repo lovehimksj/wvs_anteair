@@ -29,7 +29,6 @@ export class MasterService {
 			return res;
 		});
 	}
-<<<<<<< HEAD
 
 	public getCityByStateId(stateId) {
 		const url = `${environment.Get_City_By_State}/${stateId}`;
@@ -37,6 +36,4 @@ export class MasterService {
 			return res;
 		});
 	}
-=======
->>>>>>> origin/Developer
 }
