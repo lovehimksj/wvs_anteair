@@ -1,0 +1,90 @@
+<!-- navbar-fixed-top-->
+<app-header></app-header>
+<!-- main menu-->
+<app-admin-nav></app-admin-nav>
+<!-- / main menu-->
+
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row"></div>
+        <div class="content-body"><!-- Sales stats -->
+            <div class="row">
+                <div class="col col-lg-4">
+                    <div class="form-group">
+                        <label for="user">Select User :
+                            <span class="danger">*</span>
+                        </label>
+                        <select class="custom-select form-control"
+                                id="user" name="user"
+                                [(ngModel)]="userInfo"
+                                #user="ngModel"
+                        (change)="selectUser()">
+                            <option value="" selected="selected">Select Type</option>
+                            <option *ngFor="let user of user_list" value="{{user.key}}">{{user.value}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Recent Orders -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Recent Users</h4>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!--<div class="card-block">
+                                <p>Total paid invoices 240, unpaid 150. <span class="float-xs-right"><a
+                                    href="project-summary.html" target="_blank">Invoice Summary <i
+                                    class="icon-arrow-right2"></i></a></span></p>
+                            </div>-->
+                            <div class="table-responsive">
+                                <table id="recent-orders" class="table table-hover mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Approval</th>
+                                        <th>On board</th>
+                                        <th>Step Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let user of userList">
+                                        <td class="text-truncate">{{user.username}}</td>
+                                        <td class="text-truncate">{{user.email}}</td>
+                                        <td class="text-truncate">{{user.mobile}}</td>
+                                        <td class="text-truncate"><span class="tag tag-default tag-success">{{user.approval}}</span>
+                                        </td>
+                                        <td class="text-truncate">{{user.onboard_status}}</td>
+                                        <td class="text-truncate">{{user.step_status}}</td>
+                                        <td class="text-truncate">
+                                            <button type="button" class="btn btn-teal mr-0 mb-0 btn-secondary btn-sm"
+                                                    (click)="updateUser(user)">
+                                                <i class="icon-edit2"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-footer></app-footer>
+<!--<script src="app-assets/js/scripts/pages/dashboard-ecommerce.js" type="text/javascript"></script>-->

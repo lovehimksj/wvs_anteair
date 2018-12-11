@@ -20,7 +20,7 @@
 										       [(ngModel)]="account.company_name" #company_name="ngModel">
 									</div>
 								</div>
-								
+
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="company_type_id">Select Company Type :
@@ -36,7 +36,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="row">
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
@@ -71,7 +71,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="row">
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
@@ -81,6 +81,7 @@
 										<select class="custom-select form-control required"
 										        id="state_id" name="state_id"
 										        [(ngModel)]="account.state_id"
+												(change)="getCityByState($event)"
 										        #state_id="ngModel">
 											<option [ngValue]="null" selected disabled>Select Type</option>
 											<option *ngFor="let state of state_list" value="{{state.key}}">
@@ -89,7 +90,7 @@
 										</select>
 									</div>
 								</div>
-								
+
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
 										<label for="city_id">Select City :
@@ -100,12 +101,12 @@
 										        [(ngModel)]="account.city_id"
 										        #city_id="ngModel">
 											<option [ngValue]="null" selected disabled>Select Type</option>
-											<option *ngFor="let city of city_list" value="{{city.id}}">{{city.name}}
+											<option *ngFor="let city of city_list" value="{{city.key}}">{{city.value}}
 											</option>
 										</select>
 									</div>
 								</div>
-								
+
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
 										<label for="pin">Pincode :
@@ -118,7 +119,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="row">
 								<div class="col-md-6 col-lg-6">
 									<div class="form-group">
@@ -132,7 +133,7 @@
 										</label>
 									</div>
 								</div>
-								
+
 								<div class="col-md-6 col-lg-6">
 									<div class="form-group">
 										<label>Company Address Prof</label>
@@ -146,7 +147,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="row">
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
@@ -160,7 +161,7 @@
 										</label>
 									</div>
 								</div>
-								
+
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
 										<label>Upload GSTIN</label>
@@ -173,7 +174,7 @@
 										</label>
 									</div>
 								</div>
-								
+
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
 										<label>Upload TAN Card</label>
@@ -187,7 +188,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<!--<div class="row">
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
@@ -200,7 +201,7 @@
 										       #companyPanNumber="ngModel">
 									</div>
 								</div>
-								
+
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
 										<label for="companyGstNumber">GSTIN :
@@ -212,7 +213,7 @@
 										       #companyGstNumber="ngModel">
 									</div>
 								</div>
-								
+
 								<div class="col-md-6 col-lg-4">
 									<div class="form-group">
 										<label for="companyTanNumber">TAN :
@@ -225,7 +226,7 @@
 									</div>
 								</div>
 							</div>-->
-							
+
 							<div class="row skin skin-square mb-1">
 								<div class="col-md-12 col-sm-12 col-lg-12">
 									<label for="">Service Type :<span
@@ -358,7 +359,7 @@
 						<fieldset>
 							<h5 class="mb-1">Warehouse Details</h5>
 							<div class="row" *ngFor="let r of rows">
-								
+
 								<div class="col-md-6 col-sm-12 col-lg-6">
 									<div class="form-group">
 										<label for="contact_name">Contact
@@ -417,6 +418,7 @@
 										<select class="custom-select form-control required"
 										        id="warehouse_state_id" name="warehouse_state_id"
 										        [(ngModel)]="account.warehouse_state_id"
+                                                (change)="getCityByState($event)"
 										        #warehouse_state_id="ngModel">
 											<option value="" selected="selected">Select Type</option>
 											<option *ngFor="let state of state_list" value="{{state.key}}">{{state.value}}</option>
@@ -433,7 +435,7 @@
 										        [(ngModel)]="account.warehouse_city_id"
 										        #warehouse_city_id="ngModel">
 											<option value="" selected="selected">Select Type</option>
-											<option *ngFor="let city of city_list" value="{{city.id}}">{{city.name}}
+											<option *ngFor="let city of city_list" value="{{city.key}}">{{city.value}}
 											</option>
 										</select>
 									</div>
@@ -466,7 +468,7 @@
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-12 col-lg-6">
-									
+
 									<div class="form-group">
 										<label for="default_pickup">Default Pickup :
 											<span class="danger">*</span>
@@ -488,7 +490,7 @@
 										       name="default_billing"
 										       [(ngModel)]="account.default_billing"
 										       #default_billing="ngModel">
-									
+
 									</div>
 								</div>
 							</div>

@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
                     } else {
                         this.router.navigateByUrl('/profile');
                     }
-                } else if (response.scope === 'ROLE_ADMIN') {
+                } else if (response.scope === 'ROLE_ADMIN' || response.scope === 'ROLE_SALES') {
                     this.router.navigateByUrl('/admin/dashboard');
                 }
                 this.notification.showSuccess(`Success`, `User Logged in successfully`);

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
                     this.router.navigateByUrl('/dashboard');
                 }
             }
-            else if(this.userProvider.getCurrentUser().scope === 'ROLE_ADMIN') {
+            else if(this.userProvider.getCurrentUser().scope === 'ROLE_ADMIN' || this.userProvider.getCurrentUser().scope === 'ROLE_SALES') {
                 this.router.navigateByUrl('/admin/dashboard');
             }
         } else {

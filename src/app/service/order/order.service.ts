@@ -30,6 +30,7 @@ export class OrderService {
         formData.append('pkg_name', account.itemName);
         formData.append('catg_pkg', 'test');
         console.log(JSON.stringify(formData));
-        return this.restApi.post(url, null, formData);
+        const header = {'content-type': undefined};
+        return this.restApi.post(url, null, formData, header);
     }
 }
