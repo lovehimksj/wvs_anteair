@@ -11,7 +11,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {AuthenticationInterceptor} from './package/oAuth/authentication-interceptor.service';
 import {CommunicationService, RestApi} from './package/communication';
 import {SessionService} from './package/session/session.service';
-import {AuthenticationGuard} from './package/guards/authentication.guard';
+import {AdminAuthGuard, AuthenticationGuard} from './package/guards/authentication.guard';
 import {AccountService} from './service/account/account.service';
 import {TokenProvider} from './package/oAuth/token.provider';
 import {TokenMapper} from './package/mapper/token.mapper';
@@ -38,6 +38,7 @@ import { KeysPipe } from './pipe/keys.pipe';
 import {MasterService} from './service/masterData/master.service';
 import {NotificationService} from './package/notification/notification.service';
 import {OrderService} from './service/order/order.service';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -55,7 +56,8 @@ import {OrderService} from './service/order/order.service';
 		OrdersComponent,
 		NewOrderComponent,
 		ProfileComponent,
-		KeysPipe
+		KeysPipe,
+		AdminDashboardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -78,6 +80,7 @@ import {OrderService} from './service/order/order.service';
 		MasterService,
         NotificationService,
         OrderService,
+        AdminAuthGuard,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthenticationInterceptor,

@@ -52,7 +52,7 @@ export class TokenProvider {
 
     private refreshToken(refreshToken: string): Observable<AccessToken> {
         const refreshTokenData = `grant_type=refresh_token&refresh_token=${refreshToken}`;
-        return this.httpClient.post<any>(this.baseUri(), refreshTokenData)
+        return this.httpClient.post<any>(this.baseUri() + environment.oAuth, refreshTokenData)
             .map(response => this.tokenMapper.mapResponseToAccessToken(response));
     }
 }

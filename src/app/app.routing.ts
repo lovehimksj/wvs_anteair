@@ -5,7 +5,8 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {OrdersComponent} from './components/orders/orders.component';
 import {NewOrderComponent} from './components/orders/new-order/new-order.component';
 import {ProfileComponent} from './components/profile/profile.component';
-import {AuthenticationGuard} from './package/guards/authentication.guard';
+import {AdminAuthGuard, AuthenticationGuard} from './package/guards/authentication.guard';
+import {AdminDashboardComponent} from './components/admin-dashboard/admin-dashboard.component';
 
 export const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
@@ -14,6 +15,10 @@ export const appRoutes: Routes = [
 	{path: 'orders', component: OrdersComponent, canActivate : [AuthenticationGuard]},
 	{path: 'addOrder', component: NewOrderComponent, canActivate : [AuthenticationGuard]},
 	{path: 'profile', component: ProfileComponent, canActivate : [AuthenticationGuard]},
+	{path: 'admin', children: [
+	    {path: 'dashboard', component: AdminDashboardComponent}
+	    ]
+    },
 	// otherwise redirect to home
 	{path: '**', redirectTo: ''}
 ];

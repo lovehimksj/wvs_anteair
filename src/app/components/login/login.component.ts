@@ -35,12 +35,18 @@ export class LoginComponent implements OnInit {
                 $('#loginModal').modal('hide');
             })
             .subscribe(response => {
-                this.notification.showSuccess(`Success`, `User Logged in successfully`);
-                if (response['onboardStatus']) {
-                    this.router.navigateByUrl('/dashboard');
-                } else {
-                    this.router.navigateByUrl('/profile');
+                console.log(response.scope);
+                if (response.scope === 'ROLE_USER') {
+                    if (response['onboardStatus']) {
+                        this.router.navigateByUrl('/dashboard');
+                    } else {
+                        this.router.navigateByUrl('/profile');
+                    }
+                } else if (response.scope === 'ROLE_ADMIN') {
+                    this.router.navigateByUrl('/admin/dashboard');
                 }
+                this.notification.showSuccess(`Success`, `User Logged in successfully`);
+
             }, error => {
                 this.error = error.error;
                 this.notification.showError(`${this.error['error']}`, `${this.error['error_description']}`);
